@@ -122,7 +122,7 @@ const Cart = () => {
                      :
                      
                       cityPopupDone()
-                      handleCheckout();
+                      
                     
                   }}>
                   CHECKOUT
