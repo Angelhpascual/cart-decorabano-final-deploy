@@ -20,7 +20,6 @@ const ProductItem = ({ product }) => {
       <p className="text-center">{product.name}</p>
       <h3 className="text-left">{formatNumber(product.price)}</h3>
       <div className="text-right">
-        
         {isInCart(product) && (
           <button
             onClick={() => increase(product)}

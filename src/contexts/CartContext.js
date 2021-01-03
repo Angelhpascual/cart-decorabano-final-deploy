@@ -1,19 +1,17 @@
 import React, { createContext, useReducer } from "react";
 import { CartReducer, sumItems } from "./CartReducer";
 
-
 /**
  * CartContex
  * This is where we can create the context that will
- * be consumed by CartReducer.js and will be able to 
- * start differents functions. 
- * 
+ * be consumed by CartReducer.js and will be able to
+ * start differents functions.
+ *
  * ADD_ITEM
  * REMOVE_ITEM
  * INCREASE
  * DECREASE
- * HA
- */
+ *  */
 //Create the context
 export const CartContext = createContext();
 
@@ -22,7 +20,7 @@ const storage = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
 
-//To use the differents shared items we need a initialState  
+//To use the differents shared items we need a initialState
 const initialState = {
   cartItems: storage,
   ...sumItems(storage),
@@ -43,7 +41,6 @@ const CartContextProvider = ({ children }) => {
 
   const addProduct = (payload) => {
     console.log(state);
-    
     dispatch({ type: "ADD_ITEM", payload });
   };
 

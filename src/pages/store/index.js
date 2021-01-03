@@ -8,7 +8,7 @@ const Store = () => {
       <div>
         <div className="text-center mt-5">
           <h1>Store</h1>
-         </div>
+        </div>
         <ProductsGrid />
       </div>
     </Layout>

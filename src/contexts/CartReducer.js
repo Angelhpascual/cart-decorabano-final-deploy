@@ -1,4 +1,4 @@
-//In the reducer we define the logic for the functions that we need 
+//In the reducer we define the logic for the functions that we need
 const Storage = (cartItems) => {
   localStorage.setItem(
     "cart",
@@ -19,7 +19,7 @@ export const sumItems = (cartItems) => {
     .toFixed(2);
   //Discount percentage (10% => 90, 20% => 80)
   const discountTenPercent = 10;
-  const discountTwentyPercent = 20;  
+  const discountTwentyPercent = 20;
 
   return { itemCount, total, discountTenPercent, discountTwentyPercent };
 };
@@ -28,13 +28,13 @@ export const sumItems = (cartItems) => {
 export const CartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      if (!state.cartItems.find((item) => item.id === action.payload.id)) {        
+      if (!state.cartItems.find((item) => item.id === action.payload.id)) {
         state.cartItems.push({
           ...action.payload,
-         quantity: 1,
+          quantity: 1,
         });
       }
-      return {        
+      return {
         ...state,
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
@@ -78,6 +78,7 @@ export const CartReducer = (state, action) => {
         cartItems: [],
         ...sumItems([]),
       };
+
     default:
       return state;
   }
