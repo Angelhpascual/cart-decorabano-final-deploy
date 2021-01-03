@@ -43,7 +43,7 @@ const Cart = () => {
     clearCart,       
     discountTenPercent,
     discountTwentyPercent,
-    handleCheckout,
+    
   } = useContext(CartContext);  
 
   //handling the promoCode
