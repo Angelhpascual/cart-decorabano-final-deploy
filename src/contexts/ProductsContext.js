@@ -3,7 +3,9 @@ import { mockProducts } from "../services/mockProducts";
 export const ProductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
-  //Now we have the products on a State called products
+  /**
+   * Now we have the products on a State called products
+   */
   const [products] = useState(mockProducts);
 
   return (

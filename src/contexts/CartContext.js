@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import { CartReducer, sumItems } from "./CartReducer";
 
+import { toast } from "react-toastify";
+
 /**
  * CartContex
  * This is where we can create the context that will
@@ -32,15 +34,42 @@ const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
   const increase = (payload) => {
+    toast.info("Product Increased", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch({ type: "INCREASE", payload });
   };
 
   const decrease = (payload) => {
+    toast.info("Product Decreased", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch({ type: "DECREASE", payload });
   };
 
   const addProduct = (payload) => {
     console.log(state);
+    toast.success("Product Added", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch({ type: "ADD_ITEM", payload });
   };
 
@@ -49,12 +78,16 @@ const CartContextProvider = ({ children }) => {
   };
 
   const clearCart = () => {
+    toast.success("Cart Cleared", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch({ type: "CLEAR" });
-  };
-
-  const handleCheckout = () => {
-    console.log("CHECKOUT", state);
-    dispatch({ type: "CHECKOUT" });
   };
 
   const contextValues = {
@@ -63,7 +96,6 @@ const CartContextProvider = ({ children }) => {
     increase,
     decrease,
     clearCart,
-    handleCheckout,
     ...state,
   };
 

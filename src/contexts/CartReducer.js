@@ -21,14 +21,19 @@ export const sumItems = (cartItems) => {
   const discountTenPercent = 10;
   const discountTwentyPercent = 20;
 
-  return { itemCount, total, discountTenPercent, discountTwentyPercent };
+  return {
+    itemCount,
+    total,
+    discountTenPercent,
+    discountTwentyPercent,
+  };
 };
 
 //Defining the logic on functions to cosume in the Context
 export const CartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      if (!state.cartItems.find((item) => item.id === action.payload.id)) {
+      if (state.cartItems.filter((item) => item.id !== action.payload.id)) {
         state.cartItems.push({
           ...action.payload,
           quantity: 1,
@@ -67,12 +72,7 @@ export const CartReducer = (state, action) => {
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
       };
-    case "CHECKOUT":
-      return {
-        cartItems: [],
-        checkout: true,
-        ...sumItems([]),
-      };
+
     case "CLEAR":
       return {
         cartItems: [],

@@ -23,7 +23,7 @@ const ProductItem = ({ product }) => {
         {isInCart(product) && (
           <button
             onClick={() => increase(product)}
-            className="btn btn-outline-primary btn-sm"
+            className="btn btn-outline-info btn-sm"
           >
             Add more
           </button>

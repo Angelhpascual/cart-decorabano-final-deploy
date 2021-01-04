@@ -5,8 +5,21 @@ import styles from "./ProductsGrid.module.scss";
 
 const ProductsGrid = () => {
   const { products } = useContext(ProductsContext);
+  /**
+   * Sate for the search term
+   */
+
   const [searchTerm, setSearchTerm] = useState("");
+
+  /**
+   * State for the results (ARRAY)
+   */
+
   const [searchResults, setSearchResults] = useState([]);
+
+  /**
+   * Filtering the array with searchTerm dependencies
+   */
 
   useEffect(() => {
     const results = products.filter((product) =>

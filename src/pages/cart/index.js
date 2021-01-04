@@ -6,15 +6,25 @@ import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/formatNumber";
 
 const Cart = () => {
-  //hardcoded variables for codes
-  const mirrorCode = 6895458;
-  const dishCode = 4856885;
-  //Promo
-  const [promo, setPromo] = useState(0);
-  //Onchange promoCode
+  /**
+   * Hard Coded Codes
+   */
+  const [mirrorCode] = useState("6895458");
+  const [dishCode] = useState("4856885");
+  const [baleares] = useState(50);
+  /**
+   * Promo state
+   */
+  const [promo, setPromo] = useState("");
+
+  /**
+   * On change promoCode
+   */
   const [promoCode, setPromoCode] = useState();
 
-  //City options
+  /**
+   * City array for select
+   */
   const city = [
     {
       city: "Madrid",
@@ -29,23 +39,26 @@ const Cart = () => {
       city: "Baleares",
     },
   ];
-  //Selected city in select element
+  /**
+   * Selected from option
+   */
   const [selectcity, setSelectcity] = useState("");
 
-  //Coming from CartContext
+  /**
+   * Coming from CartContext
+   */
   const {
     total,
     cartItems,
     itemCount,
     clearCart,
     discountTenPercent,
-    handleCheckout,
-    checkout,
     discountTwentyPercent,
   } = useContext(CartContext);
 
-  //handling the promoCode
-
+  /**
+   * Handling the promocode 10% and 20%
+   */
   const promoHandler = () => {
     if (promoCode === "6895458") {
       setPromo((total * discountTenPercent) / 100);
@@ -56,7 +69,13 @@ const Cart = () => {
     }
   };
 
-  //alerts with sweetAlert2
+  /**
+   * Alerts:
+   *
+   * -Error
+   * - Checkout DONE
+   * - Discount DONE
+   */
   const cityPopupError = () => {
     Swal.fire({
       title: "Error!",
@@ -83,6 +102,8 @@ const Cart = () => {
     });
   };
 
+  const test = total - promo;
+
   return (
     <Layout title="Cart" description="This is the Cart page">
       <div>
@@ -98,7 +119,6 @@ const Cart = () => {
                 Your cart is empty
               </div>
             )}
-            {checkout && cityPopupDone()}
           </div>
           {cartItems.length > 0 && (
             <div className="col-sm-3 p-3">
@@ -111,10 +131,14 @@ const Cart = () => {
                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
                 <p className="mb-1">Total Payment</p>
                 <h3 className="m-0 txt-right">
-                  {promo > 0
-                    ? formatNumber(total - promo)
-                    : formatNumber(total)}
+                  {promo !== "" ? formatNumber(test) : formatNumber(total)}
                 </h3>
+                {selectcity === "Baleares" && (
+                  <>
+                    <p>Shipping costs + 50€</p>
+                    <h3>{formatNumber(test + baleares)}</h3>
+                  </>
+                )}
                 <hr className="my-4" />
                 <p className="mb-1">Choose your city: </p>
                 <select
@@ -135,7 +159,7 @@ const Cart = () => {
                     type="text"
                     name="promoCode"
                     className="input-sm"
-                    value={promoCode}
+                    value={promoCode || ""}
                     onChange={(e) => setPromoCode(e.target.value)}
                   />
                   <button
@@ -149,9 +173,9 @@ const Cart = () => {
                     type="button"
                     className="btn btn-primary mb-2"
                     onClick={() => {
-                      selectcity === "Gran Canaria" || selectcity === "Baleares"
+                      selectcity === "Gran Canaria"
                         ? cityPopupError()
-                        : handleCheckout();
+                        : cityPopupDone();
                     }}
                   >
                     CHECKOUT
