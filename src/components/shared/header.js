@@ -12,7 +12,7 @@ const Header = () => {
     <header className={`${styles.header} bg-primary `}>
       <div className="header__left">
         <Link className="text-white" to="/">
-          <img src={Logo} alt="" width="50" height="50" className="mr-3 logo" />
+          <img src={Logo} alt="" width="50" height="50" className="mr-3" />
           DECORABAÑO
         </Link>
       </div>
