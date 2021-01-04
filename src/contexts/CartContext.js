@@ -35,7 +35,7 @@ const CartContextProvider = ({ children }) => {
 
   const increase = (payload) => {
     toast.info("Product Increased", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -48,7 +48,7 @@ const CartContextProvider = ({ children }) => {
 
   const decrease = (payload) => {
     toast.info("Product Decreased", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -62,7 +62,7 @@ const CartContextProvider = ({ children }) => {
   const addProduct = (payload) => {
     console.log(state);
     toast.success("Product Added", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -79,7 +79,7 @@ const CartContextProvider = ({ children }) => {
 
   const clearCart = () => {
     toast.success("Cart Cleared", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,

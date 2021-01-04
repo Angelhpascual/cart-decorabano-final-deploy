@@ -131,7 +131,9 @@ const Cart = () => {
                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
                 <p className="mb-1">Total Payment</p>
                 <h3 className="m-0 txt-right">
-                  {promo !== "" ? formatNumber(test) : formatNumber(total)}
+                  {promo !== ""
+                    ? formatNumber(total - promo)
+                    : formatNumber(total)}
                 </h3>
                 {selectcity === "Baleares" && (
                   <>
