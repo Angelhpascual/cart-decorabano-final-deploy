@@ -55,7 +55,6 @@ const Cart = () => {
     discountTenPercent,
     discountTwentyPercent,
   } = useContext(CartContext);
-
   /**
    * Handling the promocode 10% and 20%
    */
