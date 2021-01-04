@@ -11,7 +11,7 @@ const Cart = () => {
    */
   const [mirrorCode] = useState("6895458");
   const [dishCode] = useState("4856885");
-  const [baleares] = useState(50);
+  const [balearesTax] = useState(50);
   /**
    * Promo state
    */
@@ -102,7 +102,7 @@ const Cart = () => {
     });
   };
 
-  const test = total - promo;
+  const baleares = total - promo;
 
   return (
     <Layout title="Cart" description="This is the Cart page">
@@ -136,7 +136,7 @@ const Cart = () => {
                 {selectcity === "Baleares" && (
                   <>
                     <p>Shipping costs + 50€</p>
-                    <h3>{formatNumber(test + baleares)}</h3>
+                    <h3>{formatNumber(baleares + balearesTax)}</h3>
                   </>
                 )}
                 <hr className="my-4" />
