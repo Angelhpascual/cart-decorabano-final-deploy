@@ -23,7 +23,7 @@ const ProductsGrid = () => {
 
   useEffect(() => {
     const results = products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm)
+      product.name.includes(searchTerm)
     );
     setSearchResults(results);
   }, [searchTerm, products]);

@@ -131,14 +131,18 @@ const Cart = () => {
                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
                 <p className="mb-1">Total Payment</p>
                 <h3 className="m-0 txt-right">
-                  {promo !== ""
-                    ? formatNumber(total - promo)
-                    : formatNumber(total)}
+                  <strong>
+                    {promo !== ""
+                      ? formatNumber(total - promo)
+                      : formatNumber(total)}
+                  </strong>
                 </h3>
                 {selectcity === "Baleares" && (
                   <>
-                    <p>Shipping costs + 50€</p>
-                    <h3>{formatNumber(baleares + balearesTax)}</h3>
+                    <p className="mt-2">Shipping costs + 50€</p>
+                    <h3>
+                      <strong>{formatNumber(baleares + balearesTax)}</strong>
+                    </h3>
                   </>
                 )}
                 <hr className="my-4" />
